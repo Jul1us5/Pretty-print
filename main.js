@@ -1,45 +1,16 @@
+let get = '';
 
-
-
-
-
-    let get = '';
-function getting( list ) {
-
-    if ( Array.isArray) {
-        for (let i=0; i < list.length; i++) {
-            get += list[i].name + '</br>';
-            console.log(list[i]);
-            
-            
-    } } 
-
-    
-
-    
-
-    
+function getPath(object, path) {
+    path = [];
+    Object.keys(object).forEach(function (key) {
+        if (object[key] && typeof object[key] === 'object') {
+            return getPath(object[key], path.concat(key));
+        }
+        get += path.concat([object[key]] + '</br>');
+    });
 }
-      
-// console.log(getting(diskas));
 
-getting(diskas);
-
-
-
-
-
+var data = diskas;
+getPath(data);
 
 document.querySelector('body').innerHTML = get;
-    // for (let i=0; i < list.length; i++) {
-    //     get += list[i] + '</br>';
-    //     console.log(list[i]);
-
-    // if ( Array.isArray(list)) {
-    //     for (let value of Object.values(list)) {
-    //         get += value + '</br>';
-    //             for (let value of Object.values(list)) {
-    //             get += value.name + '</br>';
-    //         }
-    //     }
-            
